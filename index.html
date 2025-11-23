@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP Quick Reference Guide</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar styling */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        /* Using neutral gray for thumb */
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #abb5bf; /* Neutral/Light Gray */
+            border-radius: 4px;
+        }
+        /* Using light-gray for track */
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background-color: #f3f4f6; /* Light Grey */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Colors used: #abb5bf, #1f2a52, #00bec7, #d2f0f0, #2e4d6b, #aed9d9, #4b6b74, #ffffff
+                        
+                        'neutral-gray': '#abb5bf',         /* Neutral Muted (Border/Subtle text) */
+                        'dark-primary': '#1f2a52',         /* Sidebar BG / Main Headings / Active Text */
+                        'highlight-cyan': '#00bec7',       /* Main Border / Key Requirement Border / Active Button BG */
+                        'light-aqua-bg': '#d2f0f0',        /* Key Requirement BG */
+                        'dark-secondary': '#2e4d6b',       /* Used for darker text/elements / Example Heading */
+                        'light-secondary-bg': '#aed9d9',   /* Hover BG (Soft Aqua) */
+                        'text-muted': '#4b6b74',           /* Muted body text */
+                        'content-bg': '#ffffff',           /* White */
+                        'page-bg': '#f9fafb',              /* Very light gray for overall background */
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-page-bg font-sans antialiased">
+
+    <!-- Main Container --><div id="app" class="min-h-screen flex flex-col">
+
+        <!-- Header (Title removed) --><header class="p-4 sticky top-0 z-10">
+            <!-- Header title color now uses dark-primary --><h1 class="text-2xl md:text-3xl font-bold text-dark-primary text-center tracking-tight">
+                
+            </h1>
+        </header>
+
+        <!-- Content Area: Sidebar and Main View --><main class="flex-grow max-w-7xl mx-auto w-full p-4 md:p-6 flex flex-col md:flex-row gap-6">
+
+            <!-- Sidebar (APP Navigation) - Background now uses #1f2a52 (dark-primary) and text is white --><aside id="app-sidebar" class="w-full md:w-1/3 bg-dark-primary rounded-xl shadow-lg border border-neutral-gray p-3 md:sticky md:top-10 h-auto">
+                <!-- Title styling retained for consistency --><h2 class="text-2xl font-bold text-white p-2 mb-2 border-b border-light-secondary-bg">Principle</h2>
+                <!-- APP list will be rendered here by JavaScript --></aside>
+
+            <!-- Main Content (APP Details) - Border now uses requested #00bec7 (highlight-cyan) --><section id="app-content-area" class="w-full md:w-2/3 bg-content-bg rounded-xl shadow-lg border-4 border-highlight-cyan p-6">
+                <!-- Title color uses dark-primary --><h2 id="content-title" class="text-2xl font-bold text-dark-primary p-2 mb-2 border-b border-neutral-gray">Select a principle from the sidebar.</h2>
+                <div id="content-body" class="text-dark-primary space-y-4 leading-loose">
+                    <p class="text-center text-text-muted italic p-10">
+                        Click on any Australian Privacy Principle (APP) on the left to view its key requirement and a practical example.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer (Text and border removed) --><footer class="p-4 mt-8">
+            
+        </footer>
+
+    </div>
+
+    <script>
+        // Data structure for the Australian Privacy Principles (APPs) - Titles simplified and standardized
+        const appData = [
+            {
+                id: 1,
+                appNumber: "APP 1",
+                title: "Principle Subheading", // Updated to generic placeholder
+                iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>`,
+                content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                example: "...Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                oaicUrl: 'https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-1-app-1-open-and-transparent-management-of-personal-information',
+            },
+            {
+                id: 2, 
+                appNumber: "APP 2",
+                title: "Principle Subheading", // Updated to generic placeholder
+                iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`,
+                content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+                example: "...Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+                oaicUrl: 'https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-3-app-3-collection-of-solicited-personal-information', 
+            },
+            {
+                id: 3, 
+                appNumber: "APP 3",
+                title: "Principle Subheading", // Updated to generic placeholder
+                iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`,
+                content: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
+                example: "...Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.",
+                oaicUrl: 'https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-6-app-6-use-or-disclosure-of-personal-information', 
+            },
+            {
+                id: 4, 
+                appNumber: "APP 4",
+                title: "Principle Subheading", // Updated to generic placeholder
+                iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`,
+                content: "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.",
+                example: "...Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.",
+                oaicUrl: 'https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-10-app-10-quality-of-personal-information', 
+            },
+            {
+                id: 5, 
+                appNumber: "APP 5",
+                title: "Principle Subheading", // Updated to generic placeholder
+                iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`,
+                content: "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+                example: "...Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+                oaicUrl: 'https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-11-app-11-security-of-personal-information', 
+            },
+            {
+                id: 6, 
+                appNumber: "APP 6",
+                title: "Principle Subheading", // Updated to generic placeholder
+                iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>`,
+                content: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+                example: "...Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?",
+                oaicUrls: [
+                    {
+                        title: "Access Details",
+                        url: 'https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-12-app-12-access-to-personal-information'
+                    },
+                    {
+                        title: "Correction Details",
+                        url: 'https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-13-app-13-correction-of-personal-information'
+                    }
+                ],
+            },
+        ];
+
+        let selectedAppId = null;
+
+        /**
+         * Renders the list of APPs in the sidebar navigation.
+         */
+        function renderSidebar() {
+            const sidebar = document.getElementById('app-sidebar');
+            const ul = document.createElement('ul');
+            ul.className = 'space-y-2';
+
+            appData.forEach(app => {
+                const li = document.createElement('li');
+                li.id = `app-item-${app.id}`;
+                // Default text is white
+                // Hover text is dark-primary against light-secondary-bg (soft aqua)
+                li.className = `cursor-pointer p-3 rounded-lg transition duration-200 ease-in-out flex items-center space-x-3 text-white hover:bg-light-secondary-bg hover:text-dark-primary shadow-sm`;
+
+                // Set active class if this is the currently selected item
+                // Active BG is highlight-cyan, Active text is dark-primary
+                if (app.id === selectedAppId) {
+                    li.classList.add('bg-highlight-cyan', 'text-dark-primary', 'hover:bg-highlight-cyan', 'hover:text-dark-primary', 'shadow-md');
+                } else {
+                    li.classList.remove('bg-highlight-cyan', 'text-dark-primary', 'hover:bg-highlight-cyan', 'hover:text-dark-primary', 'shadow-md');
+                }
+
+                li.innerHTML = `
+                    <div class="w-6 h-6 flex-shrink-0">
+                        ${app.iconSvg}
+                    </div>
+                    <div class="flex-grow">
+                        <!-- Display format is APP X: Title -->
+                        <span class="font-bold text-base">${app.appNumber}: ${app.title}</span>
+                    </div>
+                `;
+
+                li.addEventListener('click', () => {
+                    selectApp(app.id);
+                });
+                ul.appendChild(li);
+            });
+
+            // Clear previous content and append the new list
+            const appIndexTitle = sidebar.querySelector('h2');
+            sidebar.innerHTML = '';
+            sidebar.appendChild(appIndexTitle);
+            sidebar.appendChild(ul);
+        }
+
+        /**
+         * Updates the main content area with details of the selected APP.
+         * @param {number} id - The ID of the selected APP.
+         */
+        function selectApp(id) {
+            const app = appData.find(a => a.id === id);
+            if (!app) return;
+
+            selectedAppId = id;
+
+            const titleElement = document.getElementById('content-title');
+            const bodyElement = document.getElementById('content-body');
+
+            // Set the entire content title using the APP Number and Title
+            titleElement.innerHTML = `${app.appNumber}: ${app.title}`;
+
+            // Helper for rendering link(s)
+            let linkHtml = '';
+            // Link icon color uses highlight-cyan
+            const linkIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-highlight-cyan hover:text-dark-primary transition-colors duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>`;
+
+            if (app.oaicUrl) {
+                // Single link case
+                linkHtml = `
+                    <a href="${app.oaicUrl}" target="_blank" rel="noopener noreferrer" title="View official guidance on ${app.appNumber} (OAIC website)">
+                        ${linkIconSvg}
+                    </a>
+                `;
+            } else if (app.oaicUrls && Array.isArray(app.oaicUrls)) {
+                // Multiple link case (APP 6)
+                linkHtml = app.oaicUrls.map(link => `
+                    <a href="${link.url}" target="_blank" rel="noopener noreferrer" title="View official guidance: ${link.title}" class="flex items-center group">
+                        <!-- Text color uses highlight-cyan --><span class="text-xs font-medium text-highlight-cyan mr-1 group-hover:underline hidden sm:inline">${link.title.replace('(APP 12)', '').replace('(APP 13)', '').trim()}</span>
+                        ${linkIconSvg}
+                    </a>
+                `).join('');
+            }
+
+
+            // New structure to include both the Key Requirement and the Example
+            bodyElement.innerHTML = `
+                <!-- Key Requirement - BG uses #d2f0f0 (light-aqua-bg), border uses #00bec7 (highlight-cyan) -->
+                <div class="bg-light-aqua-bg p-4 md:p-6 rounded-xl border-4 border-highlight-cyan shadow-inner mb-6">
+                    <h3 class="text-lg md:text-xl font-bold text-dark-primary mb-2 flex justify-between items-center">
+                        <span>Key Requirement: Section Focus</span>
+                        <div class="flex items-center space-x-2">
+                           ${linkHtml}
+                        </div>
+                    </h3>
+                    <p class="text-dark-primary text-base md:text-lg">
+                        ${app.content}
+                    </p>
+                </div>
+
+                <!-- Example for Student: BG uses white, border uses #00bec7 (highlight-cyan) --><div class="bg-content-bg p-4 md:p-6 rounded-xl border-4 border-highlight-cyan shadow-inner">
+                    <h3 class="text-lg font-bold text-dark-secondary mb-2 flex items-center">
+                        <!-- Icon color updated to dark-secondary for consistency --><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-dark-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        Example Scenario:
+                    </h3>
+                    <p class="text-text-muted italic text-base">
+                        ${app.example}
+                    </p>
+                </div>
+            `;
+
+            // Re-render sidebar to update the active state
+            renderSidebar();
+        }
+
+        // Initialize the app on load
+        window.onload = function() {
+            renderSidebar();
+            // Select the first APP by default to show content immediately
+            if (appData.length > 0) {
+                 selectApp(appData[0].id);
+            }
+        };
+    </script>
+</body>
+</html>
